@@ -212,8 +212,6 @@ $(document).ready(function($) {
 	ytpPlayer();
 
 
-	
-
 
 });
 
