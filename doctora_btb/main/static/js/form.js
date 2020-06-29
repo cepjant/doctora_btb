@@ -31,10 +31,16 @@ document.forms.fb_form.onsubmit = function(e) {
           document.getElementById("fb_btn").innerHTML = 'Введите правильный адрес электронной почты';
         }
         else if(xhr.responseText === "body") {
-          document.getElementById("fb_btn").innerHTML = 'Недопустимое содержание поля "сообщение"';
+          document.getElementById("fb_btn").innerHTML = 'Недопустимое содержание в поле "сообщение"';
         }
         else if(xhr.responseText === "name") {
-          document.getElementById("fb_btn").innerHTML = 'Недопустимое содержание поля "имя"';
+          document.getElementById("fb_btn").innerHTML = 'Недопустимое содержание в поле "имя"';
+        }
+        else if(xhr.responseText === "CAPTCHA") {
+          document.getElementById("fb_btn").innerHTML = 'Подтвердите, что вы не робот.';
+        }
+        else {
+          document.getElementById("fb_btn").innerHTML = 'Ошибка.';
         }
 
 

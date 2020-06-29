@@ -3,16 +3,16 @@ from django.db import models
 
 class Message(models.Model):
     SENT = 'SENT'
-    NOT_SENT = 'NOT_SENT'
+    UNSENT = 'UNSENT'
 
     STATUS_CHOICES = (
         (SENT, 'Отправлено'),
-        (NOT_SENT, 'Не отправлено')
+        (UNSENT, 'Не отправлено')
     )
     status = models.CharField(
         max_length=8,
         choices=STATUS_CHOICES,
-        default=NOT_SENT
+        default=UNSENT
     )
     email = models.EmailField(
         verbose_name='Адрес отправителя'
@@ -23,4 +23,11 @@ class Message(models.Model):
     name = models.CharField(
         verbose_name='Имя',
         max_length=50
+    )
+    error = models.TextField(
+        verbose_name='Ошибка отправки',
+        default='NULL',
+    )
+    date = models.DateTimeField(
+        auto_now_add=True
     )
