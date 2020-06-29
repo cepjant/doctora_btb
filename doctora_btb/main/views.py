@@ -23,7 +23,7 @@ def send_message(request):
                            f'email: {email}\n\nТекст сообщения:\n{body}'
             message = Message(body=body, name=name, email=email)
             message.save()
-            async_send_mail.delay(name, message_text, settings.EMAIL_HOST_USER, ['fokewet226@qlevjh.com'], message.id)
+            async_send_mail.delay(name, message_text, settings.EMAIL_HOST_USER, settings.EMAIL_RECIPIENT, message.id)
             status = 'OK'
         else:
             status = 'CAPTCHA'

@@ -28,4 +28,4 @@ def send_unsent_mail():
             message_text = f'Отправитель:\n' \
                            f'Имя: {mes.name}\n' \
                            f'email: {mes.email}\n\nТекст сообщения:\n{mes.body}'
-            async_send_mail(mes.name, message_text, settings.EMAIL_HOST_USER, ['fokewet226@qlevjh.com'], mes.id)
+            async_send_mail(mes.name, message_text, settings.EMAIL_HOST_USER, settings.EMAIL_RECIPIENT, mes.id)
