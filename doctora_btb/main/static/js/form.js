@@ -25,22 +25,28 @@ document.forms.fb_form.onsubmit = function(e) {
 
           form.reset();
           document.getElementById("fb_btn").innerHTML = "Сообщение отправлено";
+
+          grecaptcha.reset(widgetId);
         }
 
         else if(xhr.responseText === "email") {
           document.getElementById("fb_btn").innerHTML = 'Введите правильный адрес электронной почты';
+          grecaptcha.reset(widgetId);
         }
         else if(xhr.responseText === "body") {
           document.getElementById("fb_btn").innerHTML = 'Недопустимое содержание в поле "сообщение"';
+          grecaptcha.reset(widgetId);
         }
         else if(xhr.responseText === "name") {
           document.getElementById("fb_btn").innerHTML = 'Недопустимое содержание в поле "имя"';
+          grecaptcha.reset(widgetId);
         }
         else if(xhr.responseText === "CAPTCHA") {
           document.getElementById("fb_btn").innerHTML = 'Подтвердите, что вы не робот.';
         }
         else {
           document.getElementById("fb_btn").innerHTML = 'Ошибка.';
+          grecaptcha.reset(widgetId);
         }
 
 
@@ -51,3 +57,12 @@ document.forms.fb_form.onsubmit = function(e) {
     xhr.send(data);
 
 };
+
+var reCaptchaCallback = function() {
+        var recaptcha = document.getElementsByClassName('g-recaptcha');
+
+        widgetId = grecaptcha.render("recaptcha-1", {
+            'sitekey' : '6LeIfaoZAAAAAECCCZCjQqRGgRfz15YtAfoCooFs'
+        });
+
+    };
